@@ -28,6 +28,7 @@ for i in range(sim_iterations):
     time.sleep(1/60)
     #print(i)
 
+numpy.save("data/backLegSensorValues.npy", backLegSensorValues)
 
 print(backLegSensorValues)
 
