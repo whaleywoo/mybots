@@ -25,7 +25,7 @@ sim_iterations = 1000
 backLegSensorValues = numpy.zeros(sim_iterations)
 
 targetAngles = numpy.linspace(-2*numpy.pi, 2*numpy.pi, sim_iterations)
-targetAngles = numpy.sin(targetAngles)
+targetAngles = numpy.sin(targetAngles) * numpy.pi/4
 numpy.save("data/targetAngles.npy", targetAngles)
 
 for i in range(sim_iterations):
