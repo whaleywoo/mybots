@@ -6,9 +6,10 @@ import matplotlib.pyplot as pyplot
 
 # pyplot.plot(backLegSensorValues)
 
-targetAngles = numpy.load("data/targetAngles.npy")
-print(targetAngles)
+targetAnglesBackLeg = numpy.load("data/targetAnglesBackLeg.npy")
+targetAnglesFrontLeg = numpy.load("data/targetAnglesFrontLeg.npy")
 
-pyplot.plot(targetAngles)
+pyplot.plot(targetAnglesBackLeg)
+pyplot.plot(targetAnglesFrontLeg)
 
 pyplot.show()
