@@ -24,3 +24,7 @@ class MOTOR:
         controlMode = p.POSITION_CONTROL,
         targetPosition = self.targetAngles[t],
         maxForce = 500)
+    
+
+    def Save_Values(self):
+        numpy.save("data/" + self.jointName + "MotorValues.npy", self.targetAngles)
