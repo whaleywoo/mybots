@@ -7,3 +7,13 @@ phaseOffsetBackLeg = 0
 amplitudeFrontLeg = numpy.pi/4
 frequencyFrontLeg = 1
 phaseOffsetFrontLeg = numpy.pi/4
+
+sim_iterations = 1000
+
+backLegSensorValues = numpy.zeros(sim_iterations)
+
+targetAnglesBackLeg = numpy.linspace(-2*numpy.pi, 2*numpy.pi, sim_iterations)
+targetAnglesBackLeg = amplitudeBackLeg * numpy.sin(frequencyBackLeg * targetAnglesBackLeg + phaseOffsetBackLeg)
+
+targetAnglesFrontLeg = numpy.linspace(-2*numpy.pi, 2*numpy.pi, sim_iterations)
+targetAnglesFrontLeg = amplitudeFrontLeg * numpy.sin(frequencyFrontLeg * targetAnglesFrontLeg + phaseOffsetFrontLeg)

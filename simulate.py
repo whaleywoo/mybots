@@ -43,3 +43,5 @@ from simulation import SIMULATION
 # p.disconnect()
 
 simulation = SIMULATION()
+
+simulation.Run()
