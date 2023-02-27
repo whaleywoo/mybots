@@ -6,20 +6,6 @@ import pybullet as p
 class MOTOR:
     def __init__(self, jointName):
         self.jointName = jointName
-        self.Prepare_To_Act()
-
-    def Prepare_To_Act(self):
-        self.amplitude = c.amplitudeBackLeg
-        self.frequency = c.frequencyBackLeg
-        self.offset = c.phaseOffsetBackLeg
-
-        
-        if self.jointName == 'Torso_BackLeg':
-            self.frequency /= 2
-
-
-        self.targetAngles = numpy.linspace(-2*numpy.pi, 2*numpy.pi, c.sim_iterations)
-        self.targetAngles = self.amplitude * numpy.sin(self.frequency * self.targetAngles + self.offset)
     
 
     def Set_Value(self, desiredAngle, robotId):
@@ -29,7 +15,3 @@ class MOTOR:
         controlMode = p.POSITION_CONTROL,
         targetPosition = desiredAngle,
         maxForce = 500)
-    
-
-    def Save_Values(self):
-        numpy.save("data/" + self.jointName + "MotorValues.npy", self.targetAngles)
