@@ -11,7 +11,12 @@ class MOTOR:
     def Prepare_To_Act(self):
         self.amplitude = c.amplitudeBackLeg
         self.frequency = c.frequencyBackLeg
-        self.offset = c.phaseOffsetFrontLeg
+        self.offset = c.phaseOffsetBackLeg
+
+        
+        if self.jointName == b'Torso_BackLeg':
+            self.frequency /= 2
+
 
         self.targetAngles = numpy.linspace(-2*numpy.pi, 2*numpy.pi, c.sim_iterations)
         self.targetAngles = self.amplitude * numpy.sin(self.frequency * self.targetAngles + self.offset)
