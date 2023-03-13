@@ -6,8 +6,8 @@ class SDF:
 
     def Save_Start_Tag(self,f):
 
-        f.write('<sdf>\n')
+        f.write('<sdf><world>\n')
 
     def Save_End_Tag(self,f):
 
-        f.write("</sdf>")
+        f.write("</world></sdf>")
