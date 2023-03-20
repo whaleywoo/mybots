@@ -17,3 +17,5 @@ targetAnglesFrontLeg = numpy.linspace(-2*numpy.pi, 2*numpy.pi, sim_iterations)
 targetAnglesFrontLeg = amplitudeFrontLeg * numpy.sin(frequencyFrontLeg * targetAnglesFrontLeg + phaseOffsetFrontLeg)
 
 numberOfGenerations = 10
+
+populationSize = 2
