@@ -12,7 +12,8 @@ y = 0
 z = 0.5
 
 class SOLUTION:
-    def __init__(self):
+    def __init__(self, myID):
+        self.myID = myID
         self.weights = numpy.array([[numpy.random.rand(), numpy.random.rand()], [numpy.random.rand(), numpy.random.rand()], [numpy.random.rand(), numpy.random.rand()]])
         self.weights = self.weights * 2 - 1
     
@@ -20,7 +21,7 @@ class SOLUTION:
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system('python simulate.py ' + directOrGUI)
+        os.system('start /B python simulate.py ' + directOrGUI + " " + str(self.myID))
         fitnessFile = open("fitness.txt", "r")
         self.fitness = fitnessFile.readline()
         fitnessFile.close()
@@ -41,7 +42,7 @@ class SOLUTION:
         pyrosim.End()
 
     def Create_Brain(self):
-        pyrosim.Start_NeuralNetwork("brain.nndf")
+        pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
         pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FrontLeg")
@@ -57,3 +58,6 @@ class SOLUTION:
         randomRow = random.randint(0, 2)
         randomColumn = random.randint(0, 1)
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
+    
+    def Set_ID(self, newID):
+        self.myID = newID

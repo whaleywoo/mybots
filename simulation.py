@@ -10,7 +10,7 @@ import random as random
 import constants as c
 
 class SIMULATION:
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, solutionID):
         if directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
         else:
@@ -22,7 +22,7 @@ class SIMULATION:
         p.setGravity(0,0,-9.8)
 
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
 
     def Run(self):
         for i in range(c.sim_iterations):
