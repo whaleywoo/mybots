@@ -17,6 +17,8 @@ class SOLUTION:
         self.myID = myID
         self.weights = numpy.array([[numpy.random.rand(), numpy.random.rand()], [numpy.random.rand(), numpy.random.rand()], [numpy.random.rand(), numpy.random.rand()]])
         self.weights = self.weights * 2 - 1
+        #self.weights = numpy.array([[1.0, 0.0], [0.0, 0.0], [0.0, 0.0]])
+        #print(self.weights)
     
     def Start_Simulation(self, directOrGUI):
         self.Create_World()
@@ -30,7 +32,6 @@ class SOLUTION:
             time.sleep(0.01)
         fitnessFile = open(fitnessFileName, "r")
         self.fitness = fitnessFile.readline()
-        print(self.fitness)
         fitnessFile.close()
         os.system("del fitness" + str(self.myID) + ".txt")
     
