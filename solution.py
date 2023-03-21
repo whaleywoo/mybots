@@ -2,6 +2,7 @@ import numpy
 from pyrosim import pyrosim
 import os
 import random
+import time
 
 length = 1
 width = 1
@@ -17,14 +18,25 @@ class SOLUTION:
         self.weights = numpy.array([[numpy.random.rand(), numpy.random.rand()], [numpy.random.rand(), numpy.random.rand()], [numpy.random.rand(), numpy.random.rand()]])
         self.weights = self.weights * 2 - 1
     
-    def Evaluate(self, directOrGUI):
+    def Start_Simulation(self, directOrGUI):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
         os.system('start /B python simulate.py ' + directOrGUI + " " + str(self.myID))
-        fitnessFile = open("fitness.txt", "r")
+    
+    def Wait_For_Simulation_To_End(self):
+        fitnessFileName = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+        fitnessFile = open(fitnessFileName, "r")
         self.fitness = fitnessFile.readline()
+        print(self.fitness)
         fitnessFile.close()
+        os.system("del fitness" + str(self.myID) + ".txt")
+    
+    # def Evaluate(self, directOrGUI):
+    #     self.Start_Simulation(directOrGUI)
+    #     self.Wait_For_Simulation_To_End()
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
