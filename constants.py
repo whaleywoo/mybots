@@ -8,7 +8,7 @@ amplitudeFrontLeg = numpy.pi/4
 frequencyFrontLeg = 1
 phaseOffsetFrontLeg = numpy.pi/4
 
-sim_iterations = 100
+sim_iterations = 500
 
 targetAnglesBackLeg = numpy.linspace(-2*numpy.pi, 2*numpy.pi, sim_iterations)
 targetAnglesBackLeg = amplitudeBackLeg * numpy.sin(frequencyBackLeg * targetAnglesBackLeg + phaseOffsetBackLeg)
@@ -20,5 +20,5 @@ numberOfGenerations = 1
 
 populationSize = 1
 
-numSensorNeurons = 5
-numMotorNeurons = 4
+numSensorNeurons = 9
+numMotorNeurons = 8
