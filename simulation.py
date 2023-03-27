@@ -11,6 +11,7 @@ import constants as c
 
 class SIMULATION:
     def __init__(self, directOrGUI, solutionID):
+        self.directOrGUI = directOrGUI
         if directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
         else:
@@ -31,7 +32,8 @@ class SIMULATION:
             self.robot.Think()
             self.robot.Act(i)
 
-            time.sleep(1/60)
+            if not self.directOrGUI == "DIRECT":
+                time.sleep(1/60)
             # print(i)
     
     def __del__(self):
